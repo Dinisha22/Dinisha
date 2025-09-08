@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DN Foods</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fff8f0;">
+
+  <!-- Header -->
+  <div style="background-color: #ff5722; color: white; padding: 20px; text-align: center;">
+    <h1 style="margin: 0;">DN Foods</h1>
+    <p style="margin: 5px;">Delicious Indian Street Food on the Go!</p>
+  </div>
+
+  <!-- Menu Filter -->
+  <div style="text-align: center; margin-top: 20px;">
+    <input type="text" id="searchInput" placeholder="Search menu..." onkeyup="filterMenu()" style="padding: 10px; width: 60%; max-width: 300px; border-radius: 5px; border: 1px solid #ccc;">
+  </div>
+
+  <!-- Menu -->
+  <div id="menu" style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px;">
+    <div class="menu-item" style="background:#fff; border:1px solid #ddd; margin:10px; padding:15px; border-radius:8px; width:200px;">
+      <h3 style="margin: 0;">Burger</h3>
+      <p style="margin: 5px 0;">Juicy Indian-style street burger</p>
+    </div>
+    <div class="menu-item" style="background:#fff; border:1px solid #ddd; margin:10px; padding:15px; border-radius:8px; width:200px;">
+      <h3 style="margin: 0;">Fries</h3>
+      <p style="margin: 5px 0;">Crispy masala potato fries</p>
+    </div>
+    <div class="menu-item" style="background:#fff; border:1px solid #ddd; margin:10px; padding:15px; border-radius:8px; width:200px;">
+      <h3 style="margin: 0;">Pizza</h3>
+      <p style="margin: 5px 0;">Cheesy street-style veggie pizza</p>
+    </div>
+    <div class="menu-item" style="background:#fff; border:1px solid #ddd; margin:10px; padding:15px; border-radius:8px; width:200px;">
+      <h3 style="margin: 0;">Chocolate Milkshake</h3>
+      <p style="margin: 5px 0;">Cold, creamy shake with rich chocolate</p>
+    </div>
+    <div class="menu-item" style="background:#fff; border:1px solid #ddd; margin:10px; padding:15px; border-radius:8px; width:200px;">
+      <h3 style="margin: 0;">Samosa</h3>
+      <p style="margin: 5px 0;">Crispy pastry with spiced potato filling</p>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div style="background-color:#fff3e0; padding: 30px; text-align: center;">
+    <h2>📞 Contact Us</h2>
+    <form onsubmit="return submitForm()" style="max-width: 400px; margin: auto;">
+      <input type="text" id="name" placeholder="Your Name" style="width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc;" required>
+      <input type="email" id="email" placeholder="Your Email" style="width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc;" required>
+      <textarea id="message" placeholder="Your Message" style="width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc;" required></textarea>
+      <button type="submit" style="padding: 10px 20px; background-color: #ff5722; color: white; border: none; border-radius: 5px; cursor: pointer;">Send</button>
+    </form>
+    <p id="formMessage" style="color: green; margin-top: 10px;"></p>
+  </div>
+
+  <!-- Footer -->
+  <div style="background-color: #333; color: white; text-align: center; padding: 10px;">
+    <p>&copy; 2025 DN Foods. All rights reserved.</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function submitForm() {
+      var name = document.getElementById("name").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill out all fields.");
+        return false;
+      }
+
+      document.getElementById("formMessage").innerText = "Thanks, " + name + "! We will get back to you soon.";
+      document.getElementById("name").value = '';
+      document.getElementById("email").value = '';
+      document.getElementById("message").value = '';
+      return false; // prevent actual form submission
+    }
+
+    function filterMenu() {
+      var input = document.getElementById("searchInput").value.toLowerCase();
+      var items = document.getElementsByClassName("menu-item");
+
+      for (var i = 0; i < items.length; i++) {
+        var text = items[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+          items[i].style.display = "block";
+        } else {
+          items[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
